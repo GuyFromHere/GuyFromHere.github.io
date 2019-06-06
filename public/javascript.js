@@ -36,7 +36,7 @@ function flag(id) {
             cell.innerHTML = '';
         }
     } else if ( cell.className == 'cell' ) {
-        cell.className = 'flagpng'
+        cell.className = 'flagcell'
         //cell.innerHTML = '';
         cell.innerHTML = '<img src="public/img/flag.png" class="flagpng">'
     }
