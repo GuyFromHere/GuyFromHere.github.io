@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10pt;
+    
+    text-align: center;
+    padding: 5px;
+    margin: 0;
+}
+
+.board-border {
+    display: inline-block;
+    border-style: inset;
+    border-width: 1px;
+    background-color: beige;
+}
+
+.board {
+    display: grid;
+    padding: 50px;
+}
+
+.easy {
+    grid-template-columns: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
+    grid-template-rows: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
+}
+
+.moderate {
+    grid-template-columns:  30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
+    grid-template-rows: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
+}
+
+.hard {
+    grid-template-columns: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
+    grid-template-rows: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
+}
+
+.cell {
+    border-style: outset;
+    border-width: 2px;
+    background-color: #DCDCDC;
+}
+
+.boom, .clear, .flag {
+    border-style: inset;
+    border-width: 2px;
+}
+
+.boom {
+
+    background-color: #FF0000;
+}
+
+.clear {
+    background-color: beige;
+}
+
+.flag {
+    background-color: yellow;
+}
+
+.flagpng {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width=50%;
+    /* width: 30px;
+    height: 30px; */
+}
+
+/* Modal */
+.modal-window {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.25);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    &:target {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    &>div {
+      width: 400px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 2em;
+      background: #ffffff;
+    }
+
+    
+.modal-close {
+    color: #aaa;
+    line-height: 50px;
+    font-size: 80%;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 70px;
+    text-decoration: none;
+    &:hover {
+      color: black;
+    }
+  }

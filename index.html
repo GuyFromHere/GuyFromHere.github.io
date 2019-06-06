@@ -1,7 +1,53 @@
-<!DOCTYPE html>
-<html>
-    <head>Test Page</head>
-    <body>
-        <h1>Hello</h1>
+<html lang="en">
+    <head>
+        <title>Minesweeper</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="public/styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <script type="text/javascript" src="public/javascript.js"></script>
+        <script>
+            function getDifficulty() {
+                var diff = document.getElementById('difficulty-selector');   
+                var difficulty = diff.options[diff.selectedIndex].value;
+                return difficulty;
+            }
+        </script>
+    </head>
+        <body onload="buildBoard()">
+        <header>
+                <div class="title">
+                    <h1>Minesweeper</h1>
+                </div>
+        </header>
+        
+        <main>
+            <div class="container main">
+                <div class="board-border">
+                    <div class="board" id="board"></div>
+                </div>
+                <div id="open-modal" class="modal-window">
+                    <div>
+                      <a href="#" title="Close" class="modal-close">Close</a>
+                      <h1>BOOM!</h1>
+                      <div>You blew it.</div>
+                    </div>
+                </div>
+                <div class="reset">
+                    <select id="difficulty-selector">
+                        <option value="0" selected>Easy</option>
+                        <option value="1">Moderate</option>
+                        <option value="2">Hard</option>
+                    </select>
+                    <input type="button" value="Reset" onclick="javascript:buildBoard()">
+                </div>
+            </div>
+            <div id="log">
+
+            </div>
+        </main>
+        
     </body>
 </html>
+
