@@ -28,17 +28,15 @@ function addLog(text) {
 
 function flag(id) {
     const cell = document.getElementById(id);
-    if ( cell.className == 'flag' ) {
-        if (cell.innerHTML == '') {
-            cell.innerHTML = '?';
-        } else {
-            cell.className = 'cell';
-            cell.innerHTML = '';
-        }
-    } else if ( cell.className == 'cell' ) {
-        cell.className = 'flagcell'
-        //cell.innerHTML = '';
-        cell.innerHTML = '<img src="public/img/flag.png" class="flagpng">'
+    if ( cell.className == 'flag-cell' ) {
+        cell.className = 'mystery-cell';
+        cell.innerHTML = '?';
+    } else if ( cell.className == 'cell') {
+        cell.className = 'flag-cell';
+        cell.innerHTML = '<img src="public/img/flag.png" class="flag-png">'
+    } else if ( cell.className == 'mystery-cell' ) {
+        cell.className = 'cell';
+        cell.innerHTML = '';
     }
 }
 
@@ -51,6 +49,9 @@ function safe(id) {
 function sweep(id, difficulty) {
     if ( cellDictionary[id].isMine) {
         var element = document.getElementById(id);
+        var gameOver = document.getElementById('game-over');
+        //addLog('show modal');
+        gameOver.showModal();
         element.className = 'boom';
         element.innerHTML = "X";
     } else {

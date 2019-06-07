@@ -27,13 +27,6 @@
                 <div class="board-border">
                     <div class="board" id="board"></div>
                 </div>
-                <div id="open-modal" class="modal-window">
-                    <div>
-                      <a href="#" title="Close" class="modal-close">Close</a>
-                      <h1>BOOM!</h1>
-                      <div>You blew it.</div>
-                    </div>
-                </div>
                 <div class="reset">
                     <select id="difficulty-selector">
                         <option value="0" selected>Easy</option>
@@ -47,7 +40,21 @@
 
             </div>
         </main>
+
+        <dialog id="game-over">
+            <form method="dialog">
+                <h1>GAME OVER</h1>
+                <p>Better luck next time!</p>
+                <div id="leaderboard-border">
+                    <div id="leaderboard">
+                        <table>
+                            <th>Best Time:</th>
+                        </table>
+                    </div>
+                </div>
+                <button value="cancel" >Play Again</button>
+            </form>
+        </dialog>
         
     </body>
 </html>
-
