@@ -20,6 +20,12 @@
                 <div class="title">
                     <h1>Minesweeper</h1>
                 </div>
+                <div class="scoreboard">
+                    <div id="timer">
+                        <span id="minutes">00</span>:<span id="seconds">00</span>
+                    </div>
+                    <div id="score">Mines Remaining: <span id="mines-remaining"></span></div>
+                </div>
         </header>
         
         <main>
@@ -45,16 +51,23 @@
             <form method="dialog">
                 <h1>GAME OVER</h1>
                 <p>Better luck next time!</p>
+                <button value="cancel" onclick="javascript:buildBoard()">Play Again</button>
+            </form>
+        </dialog>
+
+        <dialog id="you-win">
+            <form method="dialog">
+                <h1>YOU WON</h1>
+                <p>Way to not die!</p>
                 <div id="leaderboard-border">
                     <div id="leaderboard">
-                        <table>
+                        <table id="best-time">
                             <th>Best Time:</th>
                         </table>
                     </div>
                 </div>
-                <button value="cancel" >Play Again</button>
+                <button value="cancel" onclick="javascript:buildBoard()">Play Again</button>
             </form>
         </dialog>
-        
     </body>
 </html>

@@ -43,14 +43,14 @@ dialog {
     grid-template-rows: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
 }
 
-.cell {
+.cell, .flag-cell, .mystery-cell, flag-png  {
     border-style: outset;
     border-width: 2px;
     background-color: #DCDCDC;
     text-align: center;
 }
 
-.boom, .clear, .flag-cell, .mystery-cell {
+.boom, .clear {
     border-style: solid;
     border-width: 1px;
     border-color: #c6c6c6;
@@ -65,13 +65,20 @@ dialog {
 }
 
 .flag-cell {
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
 }
 
-.flag-png {
+/* .flag-png {
     display: block;
     width: 120%;
     margin-top: -5px;
     margin-bottom: -3px;
+}  */
+
+.flag-png {
+    display: block;
+    height: 110%;
+    /* margin-bottom: 2px; */
+    margin-left: -2px;
 }
