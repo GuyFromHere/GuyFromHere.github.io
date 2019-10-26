@@ -1,84 +1,80 @@
 * {
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-    font-size: 10pt;
-    
-    text-align: center;
-    padding: 5px;
-    margin: 0;
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+	font-size: 10pt;
+	text-align: center;
+	padding: 5px;
+	margin: 0;
 }
 
 .board-border {
-    display: inline-block;
-    border-style: inset;
-    border-width: 1px;
-    background-color: beige;
+	display: inline-block;
+	border-style: inset;
+	border-width: 1px;
+	background-color: beige;
 }
 
 .board {
-    display: grid;
-    padding: 10px; 
+	display: grid;
+	padding: 10px;
 }
 
 dialog {
-    border-style: none;
-    border-width: 2px;
-    width: 30%;
-    left: 35%;
-    right: 35%;
+	border-style: none;
+	border-width: 2px;
+	width: 30%;
+	left: 35%;
+	right: 35%;
 }
 
 .easy {
-    grid-template-columns: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
-    grid-template-rows: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
+	grid-template-columns: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
+	grid-template-rows: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
 }
 
 .moderate {
-    grid-template-columns:  30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
-    grid-template-rows: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
+	grid-template-columns: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
+	grid-template-rows: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
 }
 
 .hard {
-    grid-template-columns: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
-    grid-template-rows: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
+	grid-template-columns: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
+	grid-template-rows: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
 }
 
-.cell, .flag-cell, .mystery-cell, flag-png  {
-    border-style: outset;
-    border-width: 2px;
-    background-color: #DCDCDC;
-    text-align: center;
+.cell,
+.flag-cell,
+.mystery-cell,
+flag-png {
+	border-style: outset;
+	border-width: 2px;
+	background-color: #dcdcdc;
+	text-align: center;
 }
 
-.boom, .clear {
-    border-style: solid;
-    border-width: 1px;
-    border-color: #c6c6c6;
+.boom,
+.clear {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #c6c6c6;
 }
 
 .boom {
-    background-color: #FF0000;
+	background-color: #ff0000;
 }
 
 .clear {
-    background-color: beige;
+	background-color: beige;
 }
 
 .flag-cell {
-    /* display: flex;
-    justify-content: center; */
+	background-size: 28px 28px;
+	background-repeat: no-repeat;
+	background-image: url('../public/img/flag.png');
 }
 
-/* .flag-png {
-    display: block;
-    width: 120%;
-    margin-top: -5px;
-    margin-bottom: -3px;
-}  */
-
 .flag-png {
-    display: block;
-    height: 110%;
-    /* margin-bottom: 2px; */
-    margin-left: -2px;
+	display: block;
+	height: 110%;
+	margin-left: -2px;
 }
