@@ -1,11 +1,3 @@
-// BUGS:
-// -Clicking on a cell after it's already "swept".
-// TODO:
-// -Difficulty: I don't like how this is passed around. If I do go full-OOO this would be a property of the Game object.
-// -Game Features: timer, score, etc. OOh maybe even a high score table for each difficulty...
-// -Right click: add a question mark on second right click.
-// -Presentation: Modal triggered on game over / won. imgs for flags and mines. Possibly even the tiles themselves. What can I animate with CSS?
-
 const cellIndex = [10, 20, 30];
 const mineCount = [12, 50, 112];
 var difficulty = 0;
@@ -166,12 +158,6 @@ function checkSurroundingCells(id, difficulty) {
       }
     }
   }
-  /*   if (Game.remainingCells == 0 && Game.mines == 0) {
-    var winner = document.getElementById("you-win");
-    resetTimer();
-    bestTimes();
-    winner.showModal();
-  } */
 }
 
 function buildBoard() {
