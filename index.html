@@ -1,73 +1,87 @@
 <html lang="en">
-    <head>
-        <title>Minesweeper</title>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="public/styles.css">
-        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-        <script type="text/javascript" src="public/javascript.js"></script>
-        <script>
-            function getDifficulty() {
-                var diff = document.getElementById('difficulty-selector');   
-                var difficulty = diff.options[diff.selectedIndex].value;
-                return difficulty;
-            }
-        </script>
-    </head>
-        <body onload="buildBoard()">
-        <header>
-                <div class="title">
-                    <h1>Minesweeper</h1>
-                </div>
-                <div class="scoreboard">
-                    <div id="timer">
-                        <span id="minutes">00</span>:<span id="seconds">00</span>
-                    </div>
-                    <div id="score">Mines Remaining: <span id="mines-remaining"></span></div>
-                </div>
-        </header>
-        
-        <main>
-            <div class="container main">
-                <div class="board-border">
-                    <div class="board" id="board"></div>
-                </div>
-                <div class="reset">
-                    <select id="difficulty-selector">
-                        <option value="0" selected>Easy</option>
-                        <option value="1">Moderate</option>
-                        <option value="2">Hard</option>
-                    </select>
-                    <input type="button" value="Reset" onclick="javascript:buildBoard()">
-                </div>
-            </div>
-            <div id="log">
+  <head>
+    <title>Minesweeper</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="public/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <script type="text/javascript" src="public/javascript.js"></script>
+    <script>
+      function getDifficulty() {
+        var diff = document.getElementById("difficulty-selector");
+        var difficulty = diff.options[diff.selectedIndex].value;
+        return difficulty;
+      }
+    </script>
+  </head>
+  <body onload="buildBoard()">
+    <header>
+      <div class="title">
+        <h1>Minesweeper</h1>
+      </div>
+      <div class="scoreboard">
+        <div id="timer">
+          <span id="minutes">00</span>:<span id="seconds">00</span>
+        </div>
+        <div id="score">
+          Mines Remaining: <span id="mines-remaining"></span>
+        </div>
+      </div>
+    </header>
 
-            </div>
-        </main>
+    <main>
+      <div class="container main">
+        <div class="board-border">
+          <div class="board" id="board"></div>
+        </div>
+        <div class="reset">
+          <select id="difficulty-selector">
+            <option value="0" selected>Easy</option>
+            <option value="1">Moderate</option>
+            <option value="2">Hard</option>
+          </select>
+          <input
+            type="button"
+            value="Reset"
+            onclick="javascript:buildBoard()"
+          />
+        </div>
+      </div>
+      <div id="log"></div>
+    </main>
 
-        <dialog id="game-over">
-            <form method="dialog">
-                <h1>GAME OVER</h1>
-                <p>Better luck next time!</p>
-                <button value="cancel" onclick="javascript:buildBoard()">Play Again</button>
-            </form>
-        </dialog>
+    <dialog id="game-over">
+      <form method="dialog">
+        <h1>GAME OVER</h1>
+        <p>Better luck next time!</p>
+        <button value="cancel" onclick="javascript:buildBoard()">
+          Play Again
+        </button>
+      </form>
+    </dialog>
 
-        <dialog id="you-win">
-            <form method="dialog">
-                <h1>YOU WON</h1>
-                <p>Way to not die!</p>
-                <div id="leaderboard-border">
-                    <div id="leaderboard">
-                        <table id="best-time">
-                            <th>Best Time:</th>
-                        </table>
-                    </div>
-                </div>
-                <button value="cancel" onclick="javascript:buildBoard()">Play Again</button>
-            </form>
-        </dialog>
-    </body>
+    <dialog id="you-win">
+      <form method="dialog">
+        <h1>YOU WON</h1>
+        <p>Way to not die!</p>
+        <div id="leaderboard-border">
+          <div id="leaderboard">
+            <table id="best-time">
+              <th>Best Time:</th>
+            </table>
+          </div>
+        </div>
+        <button value="cancel" onclick="javascript:buildBoard()">
+          Play Again
+        </button>
+      </form>
+    </dialog>
+  </body>
 </html>

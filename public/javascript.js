@@ -72,13 +72,13 @@ function bestTimes() {
 
 function flag(id) {
   const cell = document.getElementById(id);
-  if (cell.className == "flag-cell") {
+  if (cell.className == "flagcell") {
     cell.className = "mystery-cell";
     cell.style.backgroundImage = "";
     cell.innerHTML = "?";
     changeScore(1);
   } else if (cell.className == "cell") {
-    cell.className = "flag-cell";
+    cell.className = "flagcell";
     cell.innerHTML = '<img src="public/img/flag.png" class="flagpng">';
     changeScore(-1);
   } else if (cell.className == "mystery-cell") {
