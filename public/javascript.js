@@ -56,7 +56,14 @@ document.addEventListener(
 
 function changeScore(num) {
   Game.mines += num;
+  Game.remainingCells += num;
   document.getElementById("mines-remaining").innerHTML = Game.mines;
+  if (Game.remainingCells == 0 && Game.mines == 0) {
+    var winner = document.getElementById("you-win");
+    resetTimer();
+    bestTimes();
+    winner.showModal();
+  }
 }
 
 function bestTimes() {
@@ -72,13 +79,13 @@ function bestTimes() {
 
 function flag(id) {
   const cell = document.getElementById(id);
-  if (cell.className == "flagcell") {
+  if (cell.className == "flag-cell") {
     cell.className = "mystery-cell";
     cell.style.backgroundImage = "";
     cell.innerHTML = "?";
     changeScore(1);
   } else if (cell.className == "cell") {
-    cell.className = "flagcell";
+    cell.className = "flag-cell";
     cell.innerHTML = '<img src="public/img/flag.png" class="flagpng">';
     changeScore(-1);
   } else if (cell.className == "mystery-cell") {
@@ -159,13 +166,12 @@ function checkSurroundingCells(id, difficulty) {
       }
     }
   }
-  if (Game.remainingCells == 12 && Game.mines == 0) {
+  /*   if (Game.remainingCells == 0 && Game.mines == 0) {
     var winner = document.getElementById("you-win");
-    alert("there");
     resetTimer();
     bestTimes();
     winner.showModal();
-  }
+  } */
 }
 
 function buildBoard() {
