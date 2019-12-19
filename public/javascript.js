@@ -1,10 +1,10 @@
 const cellIndex = [10, 20, 30];
 const mineCount = [12, 50, 112];
-var difficulty = 0;
-var cellDictionary = {};
+const difficulty = 0;
+const cellDictionary = {};
+
 var timer;
-var cellCount;
-var Game = new Object();
+const Game = new Object();
 
 // LOG & DEBUG FUNCTIONS
 function resetLog() {
@@ -22,13 +22,6 @@ function pad(val) {
   return val > 9 ? val : "0" + val;
 }
 
-function timer(sec) {
-  setInterval(function() {
-    document.getElementById("seconds").innerHTML = pad(++sec % 60);
-    document.getElementById("minutes").innerHTML = pad(parseInt(sec / 60, 10));
-  }, 1000);
-}
-
 function resetTimer() {
   clearInterval(timer);
 }
@@ -37,8 +30,8 @@ function resetTimer() {
 document.addEventListener(
   "click",
   function(e) {
-    var target = e.target || e.srcElement,
-      text = target.textContent || target.innerText;
+    const target = e.target || e.srcElement;
+    //text = target.textContent || target.innerText;
     if (target.className == "cell") {
       sweep(target.id, Game.difficulty);
     }
@@ -61,9 +54,9 @@ function changeScore(num) {
 function bestTimes() {
   const minutes = document.getElementById("minutes");
   const seconds = document.getElementById("seconds");
-  var timeTable = document.getElementById("best-time");
-  var timeTableRow = document.createElement("tr");
-  var timeTableCell = document.createElement("td");
+  const timeTable = document.getElementById("best-time");
+  const timeTableRow = document.createElement("tr");
+  const timeTableCell = document.createElement("td");
   timeTableCell.innerHTML = minutes.innerHTML + ":" + seconds.innerHTML;
   timeTableRow.appendChild(timeTableCell);
   timeTable.appendChild(timeTableRow);
@@ -89,9 +82,9 @@ function flag(id) {
 function sweep(id, difficulty) {
   if (cellDictionary[id].isMine) {
     resetTimer();
-    var gameOver = document.getElementById("game-over");
+    const gameOver = document.getElementById("game-over");
     gameOver.showModal();
-    var cell = document.getElementById(id);
+    let cell = document.getElementById(id);
     cell.className = "boom";
     cell.innerHTML = "X";
   } else {
@@ -100,15 +93,15 @@ function sweep(id, difficulty) {
 }
 
 function getRandomNumber(num) {
-  var random = Math.floor(Math.random() * num);
+  let random = Math.floor(Math.random() * num);
   return random;
 }
 
 function seedMines(difficulty) {
-  var mineCounter = 1;
+  let mineCounter = 1;
   do {
-    var randomX = getRandomNumber(cellIndex[difficulty]);
-    var randomY = getRandomNumber(cellIndex[difficulty]);
+    let randomX = getRandomNumber(cellIndex[difficulty]);
+    let randomY = getRandomNumber(cellIndex[difficulty]);
     if (!cellDictionary[randomX + " " + randomY].isMine) {
       cellDictionary[randomX + " " + randomY].isMine = true;
       mineCounter++;
@@ -120,12 +113,12 @@ function checkSurroundingCells(id, difficulty) {
   const cell = document.getElementById(id);
   if (cell.innerHTML == "" || cell.innerHTML == "?") {
     for (
-      var x = Math.max(cellDictionary[id].posX - 1, 0);
+      let x = Math.max(cellDictionary[id].posX - 1, 0);
       x <= Math.min(cellDictionary[id].posX + 1, cellIndex[difficulty] - 1);
       x++
     ) {
       for (
-        var y = Math.max(cellDictionary[id].posY - 1, 0);
+        let y = Math.max(cellDictionary[id].posY - 1, 0);
         y <= Math.min(cellDictionary[id].posY + 1, cellIndex[difficulty] - 1);
         y++
       ) {
@@ -142,12 +135,12 @@ function checkSurroundingCells(id, difficulty) {
       document.getElementById(id).className = "clear";
       Game.remainingCells -= 1;
       for (
-        var x = Math.max(cellDictionary[id].posX - 1, 0);
+        let x = Math.max(cellDictionary[id].posX - 1, 0);
         x <= Math.min(cellDictionary[id].posX + 1, cellIndex[difficulty] - 1);
         x++
       ) {
         for (
-          var y = Math.max(cellDictionary[id].posY - 1, 0);
+          let y = Math.max(cellDictionary[id].posY - 1, 0);
           y <= Math.min(cellDictionary[id].posY + 1, cellIndex[difficulty] - 1);
           y++
         ) {
@@ -163,13 +156,13 @@ function checkSurroundingCells(id, difficulty) {
 function buildBoard() {
   resetLog();
   resetTimer();
-  var sec = 0;
+  let sec = 0;
   Game.difficulty = getDifficulty();
   Game.mines = mineCount[Game.difficulty];
   Game.remainingCells = cellIndex[Game.difficulty] * cellIndex[Game.difficulty];
   document.getElementById("mines-remaining").innerHTML = Game.mines;
 
-  var board = document.getElementById("board");
+  const board = document.getElementById("board");
   board.innerHTML = "";
   board.className = "board";
 
@@ -182,9 +175,9 @@ function buildBoard() {
     board.classList.add("hard");
   }
 
-  for (var x = 0; x < cellIndex[Game.difficulty]; x++) {
-    for (var y = 0; y < cellIndex[Game.difficulty]; y++) {
-      var newNode = document.createElement("div");
+  for (let x = 0; x < cellIndex[Game.difficulty]; x++) {
+    for (let y = 0; y < cellIndex[Game.difficulty]; y++) {
+      const newNode = document.createElement("div");
       newNode.className = "cell";
       newNode.id = x + " " + y;
       newNode.innerHTML = "";
@@ -192,7 +185,7 @@ function buildBoard() {
         "oncontextmenu",
         "javascript:flag(this.id);return false;"
       );
-      let newCell = {
+      const newCell = {
         id: newNode.id,
         posX: x,
         posY: y,
@@ -208,5 +201,13 @@ function buildBoard() {
   timer = setInterval(function() {
     document.getElementById("seconds").innerHTML = pad(++sec % 60);
     document.getElementById("minutes").innerHTML = pad(parseInt(sec / 60, 10));
+    // BUG: changeScore does not detect when a game ends on a non-flag tile.
+    // Adding the following to count remaining cells every second as a (not-great) workaround
+    if (Game.remainingCells == 0 && Game.mines == 0) {
+      var winner = document.getElementById("you-win");
+      resetTimer();
+      bestTimes();
+      winner.showModal();
+    }
   }, 1000);
 }
